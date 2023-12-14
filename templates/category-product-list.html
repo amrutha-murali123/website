@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content%}{% load static%}{%csrf_token%}
+
+
+
+<div class="container mx-auto p-10">
+    <h1 class="text-3xl font-bold mb-8">{{ category.title }} </h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+        {% for product in products %}
+            <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
+                <img src="{{ product.cover_image.url }}" alt="{{ product.title }}" class="w-full h-82 object-cover mb-4">
+                <h2 class="text-xl font-semibold">{{ product.title }}</h2>
+                <p class="text-gray-700 mb-2">${{ product.price }}</p>
+                <a href="{% url 'product_detail' id=product.id %}" class="text-blue-500 hover:underline">{% trans "View Details" %}</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

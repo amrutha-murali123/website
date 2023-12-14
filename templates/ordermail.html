@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <!-- Include the Tailwind CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <h2 class="text-2xl font-bold mb-4">Order Confirmation</h2>
+        <p class="mb-4">Thank you for your order! Your order details are as follows:</p>
+        
+        <ul class="list-disc pl-8 mb-4">
+            <li><strong>Order ID:</strong> {{ order_id }}</li>
+            <li><strong>Product:</strong> {{ product_name }}</li>
+            <li><strong>Quantity:</strong> {{ quantity }}</li>
+            <li><strong>Total Price:</strong> {{ total_price }}</li>
+        </ul>
+
+        <p>We appreciate your business!</p>
+    </div>
+</body>
+</html>

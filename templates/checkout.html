@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content%}{% load static%}{%csrf_token%}
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Checkout </title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="mt-20">
+            <h1 class="flex items-center justify-center font-bold text-blue-600 text-md lg:text-3xl">
+                Checkout 
+            </h1>
+        </div>
+        <div class="container p-12 mx-auto">
+            <div class="flex flex-col w-full px-0 mx-auto md:flex-row">
+                <div class="flex flex-col md:w-full">
+                    <h2 class="mb-4 font-bold md:text-xl text-heading ">Shipping Address
+                    </h2>
+                    <form method="post" action="{% url 'shoppingcart:checkout' %}" id="payment-form">
+                        {% csrf_token %}
+                        <div class="space-y-4 ">
+                            <!-- Example existing address -->
+                        <input type="text" name="order_id" id="order_id" placeholder="Apply coupon" value="{{order_id}}"
+                        class="w-full hidden bg-gray-100 outline-none appearance-none focus:outline-none active:outline-none" />
+
+
+                            
+                            
+                            <div  class="bg-white max-w-screen w-full rounded-md"> <!--Modal Content -->
+             <div class="p-3 flex items-center justify-between border-b border-b-gray-300"> <!--Modal Header -->
+                <h3 class="font-semibold text-xl">Addresses</h3>
+                
+            </div>
+            <div class="p-3 border-b border-b-gray-300"> <!--Modal Body -->
+                        {% for address in addresses %}
+
+                            <div class=" items-start justify-between bg-gray-100">
+                                <input type="radio" name="selectedAddress" value="{{address.id}}" class="mr-2" {% if forloop.first %}checked{% endif %}>
+                                <label class="items-center">
+                                    
+                                <strong>{{ address.name}} {{address.phone_number}}</strong>
+                                </label>
+                                <p> {{ address.street_address }},{{address.city }}, {{ address.postal_code }},{{ address.state }},{{ address.country }}
+                                </p>
+
+                            </div>
+                           
+                        {% endfor %}
+            </div>
+            <div class="mt-4 mx-2">
+                                <p>
+                                <a href="{% url 'shoppingcart:add_address' %}" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded">
+                                    Add
+                                </a></p>
+                               </div>
+
+            <div class="p-3 flex items-center justify-start"> <!--Modal Footer -->
+                
+
+            </div>
+        </div>
+
+
+
+
+
+                           
+
+                            <fieldset class='text-lg pt-10 bg-gray-100'>
+                                <h3 class="text-xl font-semibold text-gray-600 mb-10"> <p class="bg-gray-700  text-white font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded">Payment Method</p></h3>
+                                <input type="radio" name="payment_method" value="cash_on_delivery" id="cash_on_delivery"
+                                    checked>
+                                <label for="cash_on_delivery">Cash on Delivery</label>
+                                <input type="radio" name="payment_method" value="razorpay" id="razorpay">
+                                <label for="razorpay">Razorpay</label>
+
+
+                            </fieldset>
+                        </div>
+
+                        <div class="mt-10">
+                            <input id="cod-button1" type='submit' value="Proceed To Pay"
+                            class=" submit-button px-4 py-3 rounded-full bg-gray-800 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
+
+
+                        <input id="rzp-button1" type='submit' value="Proceed To Pay"
+                            class="hidden submit-button px-4 py-3 rounded-full bg-gray-800 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
+                        </div>
+                        
+
+
+                    </form>
+                    
+                </div>
+                <div class="flex flex-col w-full ml-0 lg:ml-12 lg:w-2/5">
+                    <div class="pt-12 md:pt-0 2xl:ps-4">
+                        <h2 class="text-xl font-bold">Order Summary
+                        </h2>
+                        {% for item in cart_items %}
+                        <div class="mt-8">
+                            <div class="flex flex-col space-y-4">
+                                <div class="flex space-x-4">
+                                    <div>
+                                        <img src="{{item.product.cover_image.url}}" alt="image"
+                                            class="w-60">
+                                    </div>
+                                    <div>
+                                        <h2 class="text-xl font-bold">{{item.product.title}}</h2>
+                                        
+                                        <span class="text-red-600">Rs.{{item.product.price}}</span>
+                                    </div>
+                                    <div>
+                             
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% comment %} <div class="flex p-4 mt-4">
+                            <h2 class="text-xl font-bold">ITEMS 2</h2>
+                        </div> {% endcomment %}
+                        <div
+                            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Subtotal<span class="ml-2">{{cart.total}}</span></div>
+                        <div
+                            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Shipping Tax<span class="ml-2">Rs 0.00</span></div>
+                        <div
+                            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+                            Total<span class="ml-2">{{cart.total}}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+            var options = {
+                "key": "{{ payment_api_key }}",
+                "name": "Ziabags",
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": "{{ order_id }}",
+                "handler": function (response) {
+                    alert(response.razorpay_payment_id);
+                    alert(response.razorpay_order_id);
+                    alert(response.razorpay_signature);
+                    document.getElementById('payment-form').submit();
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response) {
+                alert(response.error.code);
+                alert(response.error.description);
+                alert(response.error.source);
+                alert(response.error.step);
+                alert(response.error.reason);
+                alert(response.error.metadata.order_id);
+                alert(response.error.metadata.payment_id);
+            });
+            document.getElementById('rzp-button1').onclick = function (e) {
+                rzp1.open();
+                e.preventDefault();
+            }
+        </script>
+        <script>
+
+
+            const paymentMethodRadio = document.getElementsByName("payment_method");
+            const razorpayButton = document.getElementById("rzp-button1");
+            const codButton = document.getElementById("cod-button1");
+            const razor = document.getElementById("razorpay");
+            const cod = document.getElementById("cash_on_delivery");
+        
+            cod.addEventListener("change", () => {
+                razorpayButton.classList.add("hidden");
+                codButton.classList.remove("hidden");
+            });
+        
+            razor.addEventListener("change", () => {
+                codButton.classList.add("hidden");
+                razorpayButton.classList.remove("hidden");
+            });
+        </script>
+    </body>
+</html>
+{% endblock %}

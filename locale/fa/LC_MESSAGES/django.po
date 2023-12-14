@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-13 14:51+0530\n"
+"PO-Revision-Date: 2023-12-13 10:19+0000\n"
+"Last-Translator: Anonymous User <ziabags944@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: product/models.py:14
+msgid "In Review"
+msgstr "در بررسی"
+
+#: product/models.py:15
+msgid "Approved"
+msgstr "تایید شده"
+
+#: product/models.py:16
+msgid "Rejected"
+msgstr "رد شد"
+
+#: product/models.py:73
+msgid "this is pear"
+msgstr "این گلابی است"
+
+#: product/models.py:74
+msgid "this is the product"
+msgstr "این محصول است"
+
+#: templates/base.html:156 templates/home.html:31
+msgid "BackPack"
+msgstr "کوله پشتی"
+
+#: templates/base.html:157 templates/home.html:32
+msgid "Duffles"
+msgstr "دافل"
+
+#: templates/base.html:158 templates/home.html:33
+msgid "All products"
+msgstr "محصولات"
+
+#: templates/base.html:159 templates/home.html:34
+msgid "Student Travel"
+msgstr "سفر دانشجویی"
+
+#: templates/base.html:160 templates/home.html:35
+msgid "LuggageBags"
+msgstr "کیف چمدان"
+
+#: templates/base.html:261 templates/home.html:334
+msgid "About Us"
+msgstr "درباره ما"
+
+#: templates/base.html:263 templates/home.html:336
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit "
+"augue  eget elit fringilla ultrices"
+msgstr ""
+"مشتری بسیار مهم است، مشتری توسط مشتری دنبال خواهد شد. بازی بسکتبال نیازی به "
+"تبلیغات چاپلوسی ندارد"
+
+#: templates/base.html:268 templates/home.html:341
+msgid "Quick Links"
+msgstr "لینک های سریع"
+
+#: templates/base.html:270 templates/home.html:343
+msgid "Home"
+msgstr "صفحه اصلی"
+
+#: templates/base.html:271 templates/home.html:344
+msgid "Products"
+msgstr "محصولات"
+
+#: templates/base.html:272 templates/home.html:345
+msgid "About"
+msgstr "در باره"
+
+#: templates/base.html:273 templates/home.html:346
+msgid "Contact"
+msgstr "مخاطب"
+
+#: templates/base.html:280 templates/home.html:353
+msgid "Contact Us"
+msgstr "با ما تماس بگیرید"
+
+#: templates/base.html:282 templates/home.html:355
+msgid "123 Main Street"
+msgstr "خیابان اصلی 123"
+
+#: templates/base.html:283 templates/home.html:356
+msgid "City, State ZIP Code"
+msgstr "کد پستی شهر، ایالت"
+
+#: templates/base.html:284 templates/home.html:357
+msgid "Email: info@myshop.com"
+msgstr "ایمیل: info@myshop.com"
+
+#: templates/base.html:285 templates/home.html:358
+msgid "Phone: +1 (123) 456-7890"
+msgstr "تلفن: +1 (123) 456-7890"
+
+#: templates/category-product-list.html:16
+msgid "View Details"
+msgstr "دیدن جزئیات"
+
+#: templates/emailOTP.html:18
+msgid "Hi"
+msgstr "سلام"
+
+#: templates/emailOTP.html:21
+msgid "This is your verification code:"
+msgstr "این کد تأیید شما است:"
+
+#: templates/emailOTP.html:30
+msgid "This code will only be valid for the next 1 minute:"
+msgstr "این کد فقط تا 1 دقیقه آینده معتبر خواهد بود:"
+
+#: templates/emailOTP.html:36
+msgid "Thanks"
+msgstr "با تشکر"
+
+#: templates/emailOTP.html:37
+msgid "ziabags team"
+msgstr "تیم ziabags"
+
+#: templates/emailOTP.html:44
+msgid "This email was sent to"
+msgstr "این ایمیل به"
+
+#: templates/emailOTP.html:47
+msgid "ziabags UI. All Rights Reserved."
+msgstr "رابط کاربری ziabags. تمامی حقوق محفوظ است."
+
+#: templates/home.html:274 templates/home.html:308
+msgid "Add to wishlist"
+msgstr "به سبد خرید اضافه کنید"
+
+#: templates/login.html:17
+msgid "Account Login"
+msgstr "ورود به حساب کاربری"
+
+#: templates/login.html:23
+msgid "Email address"
+msgstr "آدرس ایمیل"
+
+#: templates/login.html:36 templates/signup.html:65 templates/signup.html:78
+msgid "Password"
+msgstr "کلمه عبور"
+
+#: templates/login.html:41
+msgid "Forgot Password?"
+msgstr "رمز عبور را فراموش کرده اید؟"
+
+#: templates/login.html:57
+msgid "Log in"
+msgstr "وارد شدن"
+
+#: templates/login.html:71
+msgid "Don’t Have Account? "
+msgstr "حساب ندارید؟"
+
+#: templates/login.html:71
+msgid "Sign Up Here"
+msgstr "اینجا ثبت نام کنید"
+
+#: templates/otp.html:16
+msgid "Verify Email"
+msgstr "تأیید ایمیل"
+
+#: templates/otp.html:18
+msgid ""
+"A text with a One Time Password(OTP) has been sent to your email address"
+msgstr "متنی با رمز عبور یکبار مصرف (OTP) به آدرس ایمیل شما ارسال شده است"
+
+#: templates/otp.html:32
+msgid "Enter OTP"
+msgstr "OTP را وارد کنید"
+
+#: templates/otp.html:33
+msgid "Resend OTP"
+msgstr "ارسال مجدد OTP"
+
+#: templates/otp.html:48
+msgid "Create Account"
+msgstr "ایجاد حساب کاربری"
+
+#: templates/password_forgot_form.html:17
+msgid "Forgot your password?"
+msgstr "رمز عبور خود را فراموش کرده اید؟"
+
+#: templates/password_forgot_form.html:21
+msgid ""
+" Enter your email address below and we will email instructions for setting a"
+" new one."
+msgstr ""
+"آدرس ایمیل خود را در زیر وارد کنید و ما دستورالعمل هایی را برای تنظیم ایمیل "
+"جدید ارسال می کنیم."
+
+#: templates/password_forgot_form.html:28 templates/signup.html:51
+msgid "Email"
+msgstr "پست الکترونیک"
+
+#: templates/password_forgot_form.html:43 templates/password_reset.html:59
+msgid "submit"
+msgstr "گردن نهادن"
+
+#: templates/password_reset.html:17
+msgid "Reset password"
+msgstr "بازنشانی رمز عبور"
+
+#: templates/password_reset.html:28
+msgid "New Password"
+msgstr "رمز عبور جدید"
+
+#: templates/password_reset.html:43
+msgid "Confirm Password"
+msgstr "رمز عبور را تایید کنید"
+
+#: templates/product-detail.html:117
+msgid "New Arrival"
+msgstr "ورود جدید"
+
+#: templates/product-detail.html:168
+msgid "Description"
+msgstr "شرح"
+
+#: templates/product-detail.html:226
+msgid "Related Products"
+msgstr "محصولات"
+
+#: templates/product-list.html:4
+msgid "PRICE"
+msgstr "PRICE"
+
+#: templates/product-list.html:8
+msgid "SORT"
+msgstr "جور کردن"
+
+#: templates/product-list.html:10
+msgid "PRICE LOW TO HIGH"
+msgstr "قیمت پایین تا بالا"
+
+#: templates/product-list.html:11
+msgid "PRICE HIGH TO LOW"
+msgstr "قیمت بالا به پایین"
+
+#: templates/product-list.html:12
+msgid "NEWEST FIRST"
+msgstr "جدیدترین اول"
+
+#: templates/signup.html:19
+msgid "CREATE ACCOUNT"
+msgstr "ایجاد حساب"
+
+#: templates/signup.html:38
+msgid "Full Name"
+msgstr "تسمیه"
+
+#: templates/signup.html:94
+msgid "CREATE"
+msgstr "ايجاد كردن"
+
+#: templates/signup.html:108
+msgid "Already Have Account?"
+msgstr "از قبل حساب دارید؟"
+
+#: templates/signup.html:109
+msgid "Log In Here"
+msgstr "از اینجا وارد شوید"
+
+#: users/views.py:100
+msgid "Hello"
+msgstr "- سلام"
+
+#: ziabags/settings.py:155
+msgid "English"
+msgstr "انگلیسی"
+
+#: ziabags/settings.py:156
+msgid "Persian"
+msgstr "فارسی"
+
+#~ msgid "Whats's New"
+#~ msgstr "چه چیزی جدید است"
+
+#~ msgid "Login"
+#~ msgstr "وارد شدن"
+
+#~ msgid "What's New"
+#~ msgstr "چه چیزی جدید است"
+
+#~ msgid "Add to cart"
+#~ msgstr "به سبد خرید اضافه کنید"
+
+#~ msgid "Buy now"
+#~ msgstr "هم اکنون خریداری کنید"
+
+#~ msgid "Customer Questions & Answers"
+#~ msgstr "پرسش و پاسخ مشتری"
+
+#~ msgid "Customer Reviews"
+#~ msgstr "نظرات مشتریان"
+
+#~ msgid "StudentTravel"
+#~ msgstr "سفر دانشجویی"
+
+#~ msgid "Name"
+#~ msgstr "تسمیه"
+
+#~ msgid "my name is Amrutha Muraleedharan"
+#~ msgstr "نام من آمریتا مورالیدهران است"
+
+#, fuzzy
+#~ msgid "my name is Amrutha Muraleedharanvjxv"
+#~ msgstr "نام من آمریتا مورالیدهران است"

@@ -1,0 +1,75 @@
+{% comment %} {% extends "base.html" %}
+{% load i18n %}
+{% block content%}
+{% load cart_tag %}
+{% load static%}
+{%csrf_token%}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 p-8">
+
+    <div class="max-w-3xl mx-auto bg-white p-6 rounded shadow mt-36">
+        <h1 class="text-3xl font-bold mb-6">Order Detail - #{{ order.id }}</h1>
+
+        <!-- Display Order Details -->
+        <div>
+            <p><span class="font-bold">Date:</span> {{ order.created_at }}</p>
+            <p><span class="font-bold">Total Price:</span> ${{ order.total_price }}</p>
+            {% for item in order.orderitem.all%}
+            <img src="{{ item.product.cover_image.url }}" alt="image"
+                                            class="w-60">
+            {% endfor %}
+            <!-- Add more details based on your Order model -->
+        </div>
+
+        <!-- Additional Order Details -->
+        <!-- Customize this section based on your needs -->
+        
+ 
+        <div class="mt-4">
+            <!-- Add more details or links as needed -->
+            <a href="{% url 'shoppingcart:order_history' %}" class="text-blue-500 hover:underline">Back to Order History</a>
+        </div>
+    </div>
+
+    <section class="step-wizard m-0 mt-6 mb-28">
+        <ul class="step-wizard-list w-100 border shadow">
+          <li class="step-wizard-item">
+            <span class="progress-count ">1</span>
+            <span class="progress-label">Placed</span>
+            {% comment %} <span>{{ order.updated_at }}</span> {% endcomment %}
+          </li>
+          <li class="step-wizard-item {% if order.status == 'Placed' %}current-item{% endif %}">
+            <span class="progress-count ">2</span>
+            <span class="progress-label">Packed</span>
+            {% comment %} <span>{{ order.updated_at }}</span> {% endcomment %}
+          </li>
+          <li class="step-wizard-item {% if order.status == 'Packed' %}current-item{% endif %}">
+            <span class="progress-count">3</span>
+            <span class="progress-label">Shipped</span>
+            {% comment %} <span>{{ order.updated_at }}</span> {% endcomment %}
+          </li>
+          <li class="step-wizard-item {% if order.status == 'Shipped' %}current-item{% endif %}">
+            <span class="progress-count">4</span>
+            <span class="progress-label">Delivered</span>
+            {% comment %} <span>{{ order.updated_at }}</span> {% endcomment %}
+          </li>
+        </ul>
+      </section>
+
+      
+
+</body>
+
+</html>
+{% endblock %} {% endcomment %}

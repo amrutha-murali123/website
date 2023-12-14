@@ -1,0 +1,513 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content%}{% load static%}{%csrf_token%}
+
+
+{% if product %}
+<section class="py-10 font-poppins dark:bg-gray-800">
+  <div class="max-w-6xl px-4 mx-auto">
+    <div class="flex flex-wrap mb-24 -mx-4">
+      <div class="w-full px-4 mb-8 md:w-1/2 md:mb-0">
+        <div class="sticky top-0 overflow-hidden">
+          <div class="relative mb-6 lg:mb-10 lg:h-96">
+            <a
+              class="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2"
+              href="#"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="w-5 h-5 text-blue-500 bi bi-chevron-left dark:text-blue-200"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
+                ></path>
+              </svg>
+            </a>
+
+        <img class="object-contain w-full h-full" src="{{ product.cover_image.url }}" alt="{{ first_image.product.title }}">
+
+      
+      
+
+     
+        {% for p_img in product.img.all %}
+        <img class="object-contain w-full h-full" src="{{ p_img.images.url }}">
+        {% endfor %}
+   
+
+            <a
+              class="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2"
+              href="#"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="w-5 h-5 text-blue-500 bi bi-chevron-right dark:text-blue-200"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="flex-wrap hidden -mx-2 md:flex">
+            <div class="w-1/2 p-2 sm:w-1/4">
+              <a class="block border border-gray-200 hover:border-blue-400 dark:border-gray-700 dark:hover:border-blue-300" href="#">
+                <img class="object-contain w-full h-full" src="{{ product.imagesone.url }}" alt="{{ first_image.product.title }}" onclick="showImage('{{ product.imagesone.url }}')">
+              </a>
+            </div>
+            <div class="w-1/2 p-2 sm:w-1/4">
+              <a class="block border border-gray-200 hover:border-blue-400 dark:border-gray-700 dark:hover:border-blue-300" href="#">
+                <img class="object-contain w-full h-full" src="{{ product.imagestwo.url }}" alt="{{ first_image.product.title }}" onclick="showImage('{{ product.imagestwo.url }}')">
+                
+              </a>
+            </div>
+            <div class="w-1/2 p-2 sm:w-1/4">
+              <a class="block border border-gray-200 hover:border-blue-400 dark:border-gray-700 dark:hover:border-blue-300" href="#">
+                <img class="object-contain w-full h-full" src="{{ product.imagesthree.url }}" alt="{{ first_image.product.title }}" onclick="showImage('{{ product.imagesthree.url }}')">
+              </a>
+            </div>
+            <div class="w-1/2 p-2 sm:w-1/4">
+              <a class="block border border-gray-200 hover:border-blue-400 dark:border-gray-700 dark:hover:border-blue-300" href="#">
+                <img class="object-contain w-full h-full" src="{{ product.imagesfour.url }}" alt="{{ first_image.product.title }}" onclick="showImage('{{ product.imagesfour.url }}')">
+              </a>
+            </div>
+            <div id="imageModal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+              <div class="bg-white rounded-lg p-4">
+                  <div class="flex justify-end">
+                      <button onclick="closeModal()" class="text-3xl cursor-pointer">&times;</button>
+                  </div>
+                  <img id="modalImage" class="object-contain w-full h-full max-h-96" alt="Enlarged Image">
+              </div>
+          </div>
+          
+          <script>
+              function showImage(src) {
+                  const modal = document.getElementById('imageModal');
+                  const modalImage = document.getElementById('modalImage');
+                  modalImage.src = src;
+                  modal.classList.remove('hidden');
+              }
+          
+              function closeModal() {
+                  const modal = document.getElementById('imageModal');
+                  modal.classList.add('hidden');
+              }
+          </script>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="w-full px-4 md:w-1/2">
+        <div class="lg:pl-20">
+          <div class="mb-6">
+            <span
+              class="px-2.5 py-0.5 text-xs text-blue-600 bg-blue-100 dark:bg-gray-700 rounded-xl dark:text-gray-200"
+              >{% trans "New Arrival" %}</span
+            >
+            <h2
+              class="max-w-xl mt-6 mb-6 text-xl font-semibold leading-loose tracking-wide text-gray-700 md:text-2xl dark:text-gray-300"
+            >
+              {{product.title}}
+            </h2>
+            <div class="flex flex-wrap items-center mb-6">
+              <ul class="flex mb-4 mr-2 lg:mb-0">
+                <li>
+                  <a href="#">
+
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+
+                </li>
+                <li>
+                  <a href="#">
+
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+
+                  </a>
+                </li>
+              </ul>
+              <a
+                class="mb-4 text-xs underline hover:text-blue-600 dark:text-gray-400 dark:hover:text-gray-300 lg:mb-0"
+                href="#"
+              >
+            
+              </a>
+            </div>
+            <p
+              class="inline-block text-2xl font-semibold text-gray-700 dark:text-gray-400"
+            >
+
+              <span class="ml-3 text-base font-normal text-gray-500 line-through dark:text-gray-400">
+                Rs.{{ product.old_price }}
+              </span>
+              <span class="ml-3 text-base font-normal text-gray-500 dark:text-gray-400">
+                Rs.{{ product.price }}
+              </span>
+              
+            </p>
+          </div>
+          <div class="mb-6">
+            <h2 class="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">
+              {% trans "Description" %}
+            </h2>
+            <p>
+                {{product.description}}
+
+            </p>
+           
+          </div>
+         
+          <div class="mb-6"></div>
+          <div class="flex flex-wrap items-center mb-6">
+            <div class="mb-4 mr-4 lg:mb-0">
+              <div class="w-28">
+                <div
+                  class="relative flex flex-row w-full h-10 bg-transparent rounded-lg"
+                >
+
+                  <form id="size-form" method="post" action="{% url 'product_detail' product.id %}">
+
+                    {% csrf_token %}
+                  <input type="hidden" name="product_id" value="{{product.id}}" >
+                  <input class='border h-10 mt-8 ml-4' 
+  type="number"
+  class="w-full h-full px-4 text-sm font-bold appearance-none outline-none"
+  name="quantity"
+  id="quantity" 
+  placeholder='quantity'
+  min="1"
+/>
+
+                </div>
+              </div>
+            </div>
+            <div class="mb-4 lg:mb-0">
+
+            </div>
+            
+            <a id="add-to-cart-button" class="group relative inline-block h-12 w-full -mb-2 bg-blueGray-900 rounded-md add-to-cart-link mt-10" href="#">
+              <div class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
+                  <div class="flex h-full w-full items-center justify-center bg-green-600 border-2 border-black rounded-md">
+                      <span class="text-base font-black text-black"><button type="submit" >Add to Cart</button></span>
+                      
+                  </div>
+              </div>
+          </a>
+          
+          
+          
+          </div>
+        </form>
+   
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<h2 class="text-xl font-bold mb-4">{% trans "Related Products" %}</h2>
+<div class="flex">
+ 
+{% comment %} <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"> {% endcomment %}
+    {% for product in product.category.products.all %}
+    <div class="w-3/12">
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h3 class="text-lg font-bold mb-2">{{ category.title }}</h3> 
+            
+            <a href="{% url 'product_detail' product.id %}"><img src="{{ product.cover_image.url }}" class="text-gray-700 mb-4"></a> 
+            <p class="text-blue-500 font-semibold">Rs{{ product.price }}</p>
+            
+        </div> 
+    </div>
+    {% endfor %}
+
+</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Review Form</title>
+  <!-- Include Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <!-- Include Tailwind CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <style>
+    .rating i {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .rating i.checked {
+      color: #FFD700;
+    }
+  </style>
+  <script>
+    function setRating(rating) {
+      document.getElementById('rating').value = rating;
+      for (let i = 1; i <= 5; i++) {
+        const star = document.getElementById('star' + i);
+        if (i <= rating) {
+          star.classList.add('checked');
+        } else {
+          star.classList.remove('checked');
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="max-w-xl mx-auto bg-gray-100 p-8 my-10 rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold mb-4">Write a Review</h2>
+  </form>
+
+  <div class="w-auto px-2 mb-4">
+                    <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+        {% csrf_token %}
+        <button class="flex items-center justify-center rounded-md border border-transparent bg-black px-6 py-3 mt-4 text-base font-medium text-white shadow-sm hover:bg-gray-700">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+            </svg>
+        </button>
+    </form>
+  </div>
+  <div class="w-auto px-2 mb-4">
+
+  </div>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="mb-8 border-b-2 border-black">
+<div class="flex flex-col md:flex-row -mb-px">
+
+</div>
+</div>
+<div>
+
+</div>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Review Form</title>
+<!-- Include Font Awesome CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+<!-- Include Tailwind CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<style>
+.rating i {
+font-size: 24px;
+cursor: pointer;
+}
+
+.rating i.checked {
+color: #FFD700;
+}
+</style>
+<script>
+function setRating(rating) {
+document.getElementById('rating').value = rating;
+for (let i = 1; i <= 5; i++) {
+const star = document.getElementById('star' + i);
+if (i <= rating) {
+star.classList.add('checked');
+} else {
+star.classList.remove('checked');
+}
+}
+}
+</script>
+
+
+
+
+
+<div class="max-w-full mx-auto bg-gray-100 p-8 my-10 rounded-lg shadow-lg">
+<h2 class="text-2xl font-semibold mb-4">Write a Review</h2>
+<form action="{% url 'submit_review' product.id %}" method="post" class="space-y-4">
+
+
+{% csrf_token %}
+<div class="flex items-center rating">
+<label for="rating" class="mr-2">Rating:</label>
+<!-- Create 5 star icons as buttons -->
+{% for i in "12345" %}
+<i id="star{{ i }}" class="fa fa-star" onclick="setRating({{ i }})"></i>
+{% endfor %}
+<!-- Hidden input to store selected rating -->
+<input type="hidden" id="rating" name="rating" required>
+</div>
+
+<div>
+<label for="comment">Comment:</label>
+<textarea id="content" name="review" rows="4" required
+      class="appearance-none border border-gray-300 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></textarea>
+</div>
+
+<div>
+<button type="submit"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+Submit Review
+</button>
+</div>
+</form>
+
+    <h2 class="text-2xl font-semibold mb-4">User Reviews</h2>
+
+{% if product.reviews.all %}
+    
+                  {% for review in product.reviews.all %}
+                 <div class="w-full flex justify-start items-start flex-col bg-gray-50 dark:bg-gray-800 p-8">
+                     <div class="flex flex-col md:flex-row justify-between w-full">
+                         <div class="flex flex-row justify-between items-start">
+                         <div id="rating-stars"></div>
+<script>
+// Function to display star rating based on the given rating (1-5)
+function displayRating(rating) {
+  const ratingStars = document.getElementById('rating-stars');
+  ratingStars.innerHTML = ''; // Clear any previous stars
+
+  // Create and append checked and unchecked stars based on the rating
+  for (let i = 1; i <= 5; i++) {
+    const star = document.createElement('i');
+    star.classList.add('fa', 'fa-star');
+
+    if (i <= rating) {
+      star.classList.add('checked');
+    }
+
+    ratingStars.appendChild(star);
+  }
+}
+
+// Example usage: Set the rating to 3 (you can replace this with your actual review rating)
+const reviewRating = {{review.rating}};
+displayRating(reviewRating);
+
+</script>
+
+
+<button onclick="showMenu(true)" class="ml-4 md:hidden">
+                                 <svg id="closeIcon" class="hidden" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M15 12.5L10 7.5L5 12.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                 </svg>
+                                 <svg id="openIcon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                     <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                                 </svg>
+                             </button>
+                         </div>
+                         <div class="cursor-pointer mt-2 md:mt-0">
+                             <svg class="dark:text-white" width="152" height="24" viewBox="0 0 152 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <g clip-path="url(#clip0)">
+                                     <path
+                                         d="M17.5598 24.4285C17.3999 24.4291 17.2422 24.3914 17.0998 24.3185L11.9998 21.6485L6.89982 24.3185C6.73422 24.4056 6.5475 24.4444 6.3609 24.4307C6.1743 24.4169 5.9953 24.3511 5.84425 24.2407C5.6932 24.1303 5.57616 23.9797 5.50644 23.8061C5.43671 23.6324 5.4171 23.4427 5.44982 23.2585L6.44982 17.6285L2.32982 13.6285C2.20128 13.5002 2.1101 13.3394 2.06605 13.1632C2.02201 12.987 2.02677 12.8022 2.07982 12.6285C2.13778 12.4508 2.2444 12.2928 2.38757 12.1726C2.53075 12.0525 2.70475 11.9748 2.88982 11.9485L8.58982 11.1185L11.0998 5.98849C11.1817 5.81942 11.3096 5.67683 11.4687 5.57706C11.6279 5.47729 11.812 5.42438 11.9998 5.42438C12.1877 5.42438 12.3717 5.47729 12.5309 5.57706C12.6901 5.67683 12.8179 5.81942 12.8998 5.98849L15.4398 11.1085L21.1398 11.9385C21.3249 11.9648 21.4989 12.0425 21.6421 12.1626C21.7852 12.2828 21.8919 12.4408 21.9498 12.6185C22.0029 12.7922 22.0076 12.977 21.9636 13.1532C21.9196 13.3294 21.8284 13.4902 21.6998 13.6185L17.5798 17.6185L18.5798 23.2485C18.6155 23.436 18.5968 23.6297 18.526 23.8069C18.4551 23.9841 18.335 24.1374 18.1798 24.2485C17.9987 24.3754 17.7807 24.4387 17.5598 24.4285V24.4285Z"
+                                         fill="currentColor"
+                                     />
+                                 </g>
+                                 <g clip-path="url(#clip1)">
+                                     <path
+                                         d="M49.5598 24.4285C49.3999 24.4291 49.2422 24.3914 49.0998 24.3185L43.9998 21.6485L38.8998 24.3185C38.7342 24.4056 38.5475 24.4444 38.3609 24.4307C38.1743 24.4169 37.9953 24.3511 37.8443 24.2407C37.6932 24.1303 37.5762 23.9797 37.5064 23.8061C37.4367 23.6324 37.4171 23.4427 37.4498 23.2585L38.4498 17.6285L34.3298 13.6285C34.2013 13.5002 34.1101 13.3394 34.0661 13.1632C34.022 12.987 34.0268 12.8022 34.0798 12.6285C34.1378 12.4508 34.2444 12.2928 34.3876 12.1726C34.5307 12.0525 34.7047 11.9748 34.8898 11.9485L40.5898 11.1185L43.0998 5.98849C43.1817 5.81942 43.3096 5.67683 43.4687 5.57706C43.6279 5.47729 43.812 5.42438 43.9998 5.42438C44.1877 5.42438 44.3717 5.47729 44.5309 5.57706C44.6901 5.67683 44.8179 5.81942 44.8998 5.98849L47.4398 11.1085L53.1398 11.9385C53.3249 11.9648 53.4989 12.0425 53.6421 12.1626C53.7852 12.2828 53.8919 12.4408 53.9498 12.6185C54.0029 12.7922 54.0076 12.977 53.9636 13.1532C53.9196 13.3294 53.8284 13.4902 53.6998 13.6185L49.5798 17.6185L50.5798 23.2485C50.6155 23.436 50.5968 23.6297 50.526 23.8069C50.4551 23.9841 50.335 24.1374 50.1798 24.2485C49.9987 24.3754 49.7807 24.4387 49.5598 24.4285V24.4285Z"
+                                         fill="currentColor"
+                                     />
+                                 </g>
+                                 <g clip-path="url(#clip2)">
+                                     <path
+
+
+d="M81.5598 24.4285C81.3999 24.4291 81.2422 24.3914 81.0998 24.3185L75.9998 21.6485L70.8998 24.3185C70.7342 24.4056 70.5475 24.4444 70.3609 24.4307C70.1743 24.4169 69.9953 24.3511 69.8443 24.2407C69.6932 24.1303 69.5762 23.9797 69.5064 23.8061C69.4367 23.6324 69.4171 23.4427 69.4498 23.2585L70.4498 17.6285L66.3298 13.6285C66.2013 13.5002 66.1101 13.3394 66.0661 13.1632C66.022 12.987 66.0268 12.8022 66.0798 12.6285C66.1378 12.4508 66.2444 12.2928 66.3876 12.1726C66.5307 12.0525 66.7047 11.9748 66.8898 11.9485L72.5898 11.1185L75.0998 5.98849C75.1817 5.81942 75.3096 5.67683 75.4687 5.57706C75.6279 5.47729 75.812 5.42438 75.9998 5.42438C76.1877 5.42438 76.3717 5.47729 76.5309 5.57706C76.6901 5.67683 76.8179 5.81942 76.8998 5.98849L79.4398 11.1085L85.1398 11.9385C85.3249 11.9648 85.4989 12.0425 85.6421 12.1626C85.7852 12.2828 85.8919 12.4408 85.9498 12.6185C86.0029 12.7922 86.0076 12.977 85.9636 13.1532C85.9196 13.3294 85.8284 13.4902 85.6998 13.6185L81.5798 17.6185L82.5798 23.2485C82.6155 23.436 82.5968 23.6297 82.526 23.8069C82.4551 23.9841 82.335 24.1374 82.1798 24.2485C81.9987 24.3754 81.7807 24.4387 81.5598 24.4285V24.4285Z"
+                                         fill="currentColor"
+                                     />
+                                 </g>
+                                 <g clip-path="url(#clip3)">
+                                     <path
+                                         d="M113.56 24.4285C113.4 24.4291 113.242 24.3914 113.1 24.3185L108 21.6485L102.9 24.3185C102.734 24.4056 102.548 24.4444 102.361 24.4307C102.174 24.4169 101.995 24.3511 101.844 24.2407C101.693 24.1303 101.576 23.9797 101.506 23.8061C101.437 23.6324 101.417 23.4427 101.45 23.2585L102.45 17.6285L98.3298 13.6285C98.2013 13.5002 98.1101 13.3394 98.0661 13.1632C98.022 12.987 98.0268 12.8022 98.0798 12.6285C98.1378 12.4508 98.2444 12.2928 98.3876 12.1726C98.5307 12.0525 98.7047 11.9748 98.8898 11.9485L104.59 11.1185L107.1 5.98849C107.182 5.81942 107.31 5.67683 107.469 5.57706C107.628 5.47729 107.812 5.42438 108 5.42438C108.188 5.42438 108.372 5.47729 108.531 5.57706C108.69 5.67683 108.818 5.81942 108.9 5.98849L111.44 11.1085L117.14 11.9385C117.325 11.9648 117.499 12.0425 117.642 12.1626C117.785 12.2828 117.892 12.4408 117.95 12.6185C118.003 12.7922 118.008 12.977 117.964 13.1532C117.92 13.3294 117.828 13.4902 117.7 13.6185L113.58 17.6185L114.58 23.2485C114.616 23.436 114.597 23.6297 114.526 23.8069C114.455 23.9841 114.335 24.1374 114.18 24.2485C113.999 24.3754 113.781 24.4387 113.56 24.4285V24.4285Z"
+                                         fill="currentColor"
+                                     />
+                                 </g>
+                                 <g clip-path="url(#clip4)">
+                                     <path d="M135.146 16.911L131.052 12.9355L136.734 12.1081L137.256 12.032L137.488 11.558L139.998 6.42798L139.998 6.42798L140 6.42443L140.004 6.4329L142.544 11.5529L142.777 12.0225L143.296 12.0981L148.978 12.9255L144.883 16.901L144.502 17.2708L144.595 17.7934L145.595 23.4234L145.595 23.4234L145.597 23.4356L145.605 23.4463L145.56 24.4285L145.556 23.4474L145.564 23.4326L140.464 20.7626L140 20.5197L139.536 20.7626L134.436 23.4326L134.434 23.4334L135.434 17.8034L135.527 17.2808L135.146 16.911Z" stroke="currentColor" stroke-width="2" />
+                                 </g>
+                                 <defs>
+                                     <clipPath id="clip0">
+                                         <rect width="24" height="24" fill="white" />
+                                     </clipPath>
+                                     <clipPath id="clip1">
+                                         <rect width="24" height="24" fill="white" transform="translate(32)" />
+                                     </clipPath>
+                                     <clipPath id="clip2">
+                                         <rect width="24" height="24" fill="white" transform="translate(64)" />
+                                     </clipPath>
+
+
+<clipPath id="clip3">
+                                         <rect width="24" height="24" fill="white" transform="translate(96)" />
+                                     </clipPath>
+                                     <clipPath id="clip4">
+                                         <rect width="24" height="24" fill="white" transform="translate(128)" />
+                                     </clipPath>
+                                 </defs>
+                             </svg>
+                         </div>
+                     </div>
+                     <div id="menu" class="md:block">
+                         <p class="mt-3 text-base leading-normal text-gray-600 dark:text-white w-full md:w-9/12 xl:w-5/6">{{review.description}}</p>
+                         <div class="hidden md:flex mt-6 flex-row justify-start items-start space-x-4">
+                             {% if review.review_images.all %}
+                             <div>
+                             {% for image in review.review_images.all%}
+                                 <img src="{{image.image.url}}" class='h-20 w-18' alt="chair-1" />
+                             </div>
+                             {% endfor %}
+                             {% endif %}
+                         </div>
+                         
+                         <div class="mt-6 flex justify-start items-center flex-row space-x-2.5">
+                             <div>
+                                 <img src="https://i.ibb.co/QcqyrVG/Mask-Group.png" alt="girl-avatar" />
+                             </div>
+                             <div class="flex flex-col justify-start items-start space-y-2">
+                                 <p class="text-base font-medium leading-none text-gray-800 dark:text-white">{{review.user.username}}</p>
+                                 <p class="text-sm leading-none text-gray-600 dark:text-white">{{review.created_at}}</p>
+                             </div>
+                         </div>
+                     </div>
+     
+                            
+                         
+                     </div>
+                 </div>
+                 {% endfor %}
+                 {% endif %}
+  </div>
+  
+
+  
+
+
+
+
+
+
+{% endif %}
+{% endblock %}

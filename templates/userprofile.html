@@ -1,0 +1,39 @@
+<!-- userprofile.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="container mx-auto p-4 mb-16 mt-16">
+    <h2 class="text-3xl font-semibold mb-8">User Profile</h2>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <p class="text-lg mb-2"><strong>Username:</strong> {{ user.username }}</p>
+      <p class="text-lg mb-2"><strong>Email:</strong> {{ user.email }}</p>
+      <!-- Add other user-related information as needed -->
+
+      {% if user.userprofile %}
+        <div class="mt-6">
+          <h3 class="text-xl font-semibold mb-2">Additional Profile Information</h3>
+          <p class="text-lg mb-2"><strong>Full Name:</strong> {{ user.userprofile.full_name }}</p>
+          <p class="text-lg mb-2"><strong>Birthdate:</strong> {{ user.userprofile.birthdate }}</p>
+          <!-- Add other profile fields as needed -->
+        </div>
+      {% else %}
+      
+      <div class="container mx-auto mt-24 text-center">
+        <button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Order History
+        </button>
+
+        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-4">
+            Manage Address
+        </button>
+    </div>
+
+        
+
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

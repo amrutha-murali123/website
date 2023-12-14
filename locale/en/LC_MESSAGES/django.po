@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-13 14:51+0530\n"
+"PO-Revision-Date: 2023-12-13 09:06+0000\n"
+"Last-Translator: Anonymous User <ziabags944@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.9\n"
+
+#: product/models.py:14
+msgid "In Review"
+msgstr "In Review"
+
+#: product/models.py:15
+msgid "Approved"
+msgstr "Approved"
+
+#: product/models.py:16
+msgid "Rejected"
+msgstr "Rejected"
+
+#: product/models.py:73
+msgid "this is pear"
+msgstr "this is pear"
+
+#: product/models.py:74
+msgid "this is the product"
+msgstr "this is the product"
+
+#: templates/base.html:156 templates/home.html:31
+msgid "BackPack"
+msgstr "BackPack"
+
+#: templates/base.html:157 templates/home.html:32
+msgid "Duffles"
+msgstr "Duffles"
+
+#: templates/base.html:158 templates/home.html:33
+msgid "All products"
+msgstr "Products"
+
+#: templates/base.html:159 templates/home.html:34
+msgid "Student Travel"
+msgstr "Student Travel"
+
+#: templates/base.html:160 templates/home.html:35
+msgid "LuggageBags"
+msgstr "LuggageBags"
+
+#: templates/base.html:261 templates/home.html:334
+msgid "About Us"
+msgstr "About Us"
+
+#: templates/base.html:263 templates/home.html:336
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit "
+"augue  eget elit fringilla ultrices"
+msgstr ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit "
+"augue eget elit fringilla ultrices"
+
+#: templates/base.html:268 templates/home.html:341
+msgid "Quick Links"
+msgstr "Quick Links"
+
+#: templates/base.html:270 templates/home.html:343
+msgid "Home"
+msgstr "Home"
+
+#: templates/base.html:271 templates/home.html:344
+msgid "Products"
+msgstr "Products"
+
+#: templates/base.html:272 templates/home.html:345
+msgid "About"
+msgstr "About"
+
+#: templates/base.html:273 templates/home.html:346
+msgid "Contact"
+msgstr "Contact"
+
+#: templates/base.html:280 templates/home.html:353
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: templates/base.html:282 templates/home.html:355
+msgid "123 Main Street"
+msgstr "123 Main Street"
+
+#: templates/base.html:283 templates/home.html:356
+msgid "City, State ZIP Code"
+msgstr "City, State ZIP Code"
+
+#: templates/base.html:284 templates/home.html:357
+msgid "Email: info@myshop.com"
+msgstr "Email: info@myshop.com"
+
+#: templates/base.html:285 templates/home.html:358
+msgid "Phone: +1 (123) 456-7890"
+msgstr "Phone: +1 (123) 456-7890"
+
+#: templates/category-product-list.html:16
+msgid "View Details"
+msgstr "View Details"
+
+#: templates/emailOTP.html:18
+msgid "Hi"
+msgstr "Hi"
+
+#: templates/emailOTP.html:21
+msgid "This is your verification code:"
+msgstr "This is your verification code:"
+
+#: templates/emailOTP.html:30
+msgid "This code will only be valid for the next 1 minute:"
+msgstr "This code will only be valid for the next 1 minute:"
+
+#: templates/emailOTP.html:36
+msgid "Thanks"
+msgstr "Thanks"
+
+#: templates/emailOTP.html:37
+msgid "ziabags team"
+msgstr "ziabags team"
+
+#: templates/emailOTP.html:44
+msgid "This email was sent to"
+msgstr "This email was sent to"
+
+#: templates/emailOTP.html:47
+msgid "ziabags UI. All Rights Reserved."
+msgstr "ziabags UI. All Rights Reserved."
+
+#: templates/home.html:274 templates/home.html:308
+msgid "Add to wishlist"
+msgstr "Add to Cart"
+
+#: templates/login.html:17
+msgid "Account Login"
+msgstr "Account Login"
+
+#: templates/login.html:23
+msgid "Email address"
+msgstr "Email address"
+
+#: templates/login.html:36 templates/signup.html:65 templates/signup.html:78
+msgid "Password"
+msgstr "Password"
+
+#: templates/login.html:41
+msgid "Forgot Password?"
+msgstr "Forgot Password?"
+
+#: templates/login.html:57
+msgid "Log in"
+msgstr "Log in"
+
+#: templates/login.html:71
+msgid "Don’t Have Account? "
+msgstr "Don’t Have Account?"
+
+#: templates/login.html:71
+msgid "Sign Up Here"
+msgstr "Sign Up Here"
+
+#: templates/otp.html:16
+msgid "Verify Email"
+msgstr "Verify Email"
+
+#: templates/otp.html:18
+msgid ""
+"A text with a One Time Password(OTP) has been sent to your email address"
+msgstr ""
+"A text with a One Time Password(OTP) has been sent to your email address"
+
+#: templates/otp.html:32
+msgid "Enter OTP"
+msgstr "Enter OTP"
+
+#: templates/otp.html:33
+msgid "Resend OTP"
+msgstr "Resend OTP"
+
+#: templates/otp.html:48
+msgid "Create Account"
+msgstr "Create Account"
+
+#: templates/password_forgot_form.html:17
+msgid "Forgot your password?"
+msgstr "Forgot your password?"
+
+#: templates/password_forgot_form.html:21
+msgid ""
+" Enter your email address below and we will email instructions for setting a "
+"new one."
+msgstr ""
+"Enter your email address below and we will email instructions for setting a "
+"new one."
+
+#: templates/password_forgot_form.html:28 templates/signup.html:51
+msgid "Email"
+msgstr "Email"
+
+#: templates/password_forgot_form.html:43 templates/password_reset.html:59
+msgid "submit"
+msgstr "submit"
+
+#: templates/password_reset.html:17
+msgid "Reset password"
+msgstr "Reset password"
+
+#: templates/password_reset.html:28
+msgid "New Password"
+msgstr "New Password"
+
+#: templates/password_reset.html:43
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: templates/product-detail.html:117
+msgid "New Arrival"
+msgstr "New Arrival"
+
+#: templates/product-detail.html:168
+msgid "Description"
+msgstr "Description"
+
+#: templates/product-detail.html:226
+msgid "Related Products"
+msgstr "Products"
+
+#: templates/product-list.html:4
+msgid "PRICE"
+msgstr "PRICE"
+
+#: templates/product-list.html:8
+msgid "SORT"
+msgstr "SORT"
+
+#: templates/product-list.html:10
+msgid "PRICE LOW TO HIGH"
+msgstr "PRICE LOW TO HIGH"
+
+#: templates/product-list.html:11
+msgid "PRICE HIGH TO LOW"
+msgstr "PRICE HIGH TO LOW"
+
+#: templates/product-list.html:12
+msgid "NEWEST FIRST"
+msgstr "NEWEST FIRST"
+
+#: templates/signup.html:19
+msgid "CREATE ACCOUNT"
+msgstr "CREATE ACCOUNT"
+
+#: templates/signup.html:38
+msgid "Full Name"
+msgstr "Name"
+
+#: templates/signup.html:94
+msgid "CREATE"
+msgstr "CREATE"
+
+#: templates/signup.html:108
+msgid "Already Have Account?"
+msgstr "Already Have Account?"
+
+#: templates/signup.html:109
+msgid "Log In Here"
+msgstr "Log In Here"
+
+#: users/views.py:100
+msgid "Hello"
+msgstr "hello"
+
+#: ziabags/settings.py:155
+msgid "English"
+msgstr "english"
+
+#: ziabags/settings.py:156
+msgid "Persian"
+msgstr "persian"
+
+#~ msgid "Whats's New"
+#~ msgstr "Whats's New"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "What's New"
+#~ msgstr "Whats's New"
+
+#~ msgid "Add to cart"
+#~ msgstr "Add to Cart"
+
+#~ msgid "Buy now"
+#~ msgstr "Buy now"
+
+#~ msgid "Customer Questions & Answers"
+#~ msgstr "Customer Questions & Answers"
+
+#~ msgid "Customer Reviews"
+#~ msgstr "Customer Reviews"
+
+#~ msgid "StudentTravel"
+#~ msgstr "Student Travel"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "my name is Amrutha Muraleedharan"
+#~ msgstr "my name is amrutha muraleedharan"
+
+#, fuzzy
+#~ msgid "my name is Amrutha Muraleedharanvjxv"
+#~ msgstr "my name is amrutha muraleedharan"

@@ -1,0 +1,82 @@
+{% extends "base.html" %}{% load i18n %}{% block content%}{% load static%}
+<div class="flex">
+    <div class="w-2/12"> 
+        <div class="ps-3 ms-1 pt-2">{% trans "PRICE" %}</div>
+        <div class="accordion-body p-0 pb-2">
+          <div class="my-js-slider"></div>
+        </div>
+        <div class="text-xl pt-3 pb-1 font-bold">{% trans "SORT" %}</div>
+<ul class="space-y-1 pb-3">
+    <li onclick="sorting('price_low')" class="cursor-pointer px-2 py-1 rounded {% if request.GET.sort == 'price_low' %}bg-gray-300{% endif %}">{% trans "PRICE LOW TO HIGH" %}</li>
+    <li onclick="sorting('price_high')" class="cursor-pointer px-2 py-1 rounded {% if request.GET.sort == 'price_high' %}bg-gray-300{% endif %}">{% trans "PRICE HIGH TO LOW" %}</li>
+    <li onclick="sorting('new')" class="cursor-pointer px-2 py-1 rounded {% if request.GET.sort == 'new' %}bg-gray-300{% endif %}">{% trans "NEWEST FIRST" %}</li>
+
+</ul>
+ </div>
+    <div class="w-10/12">
+        <section class="py-12 bg-white">
+            <div class="container mx-auto text-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        
+                    {% for product in products %}
+
+                    <div class="bg-white rounded-lg ">
+                        <a href="{% url 'product_detail' product.id%}"><img src="{{ product.cover_image.url }}" alt="Product 1" class="mx-auto mb-4"></a>
+                        <h3 class="text-xl font-semibold">{{product.title}}</h3>
+                        <p class="text-gray-600">{{product.category.title}}</p>
+                        <div class="mt-4">
+                            <span class="text-xl font-bold">{{product.price}}</span>
+                            {% comment %} <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right">{% trans "Add to Cart" %}
+                                </button> {% endcomment %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    </div>
+  </div>
+<script>
+let currentUrl = new URL(window.location.href);
+let urlparams = new URLSearchParams(currentUrl.search);
+
+    function sorting(sortby) {
+        urlparams.set('sort', sortby);
+        currentUrl.search = urlparams.toString();
+        window.location.href = currentUrl.toString();
+      }
+    </script>
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="{% static 'wrunner-jquery.js' %} "></script>
+<script>
+  $(document).ready(function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var minValueFromUrl = urlParams.get('min');
+    var maxValueFromUrl = urlParams.get('max');
+
+    var slider = $('.my-js-slider');
+    var count = 0;
+
+    slider.wRunner({
+      type: 'range',
+      rangeValue: {
+        minValue: minValueFromUrl  0,
+        maxValue: maxValueFromUrl  10000,
+      },
+      step: 100,
+      onValueUpdate: function(values) {
+        count++;
+        if (count > 7) {
+          let currentUrl = new URL(window.location.href);
+          let urlparams = new URLSearchParams(currentUrl.search);
+          urlparams.set('min', values.minValue);
+          urlparams.set('max', values.maxValue);
+          currentUrl.search = urlparams.toString();
+          window.location.href = currentUrl.toString();
+        }
+      }
+    });
+  });
+</script>
+{% endblock content %}

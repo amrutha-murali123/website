@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EchoTunes</title>
+</head>
+<body>
+<div style="font-size: xx-large;text-align: center;font-weight: bold;margin-bottom: 2rem;">INVOICE</div>
+<table style="width: 100%;margin-bottom: 2rem;">
+  <tr>
+    <td style="width: 30%;font-size: x-large;font-weight: 500;">From Address</td>
+    <td style="width: 30%;font-size: x-large;font-weight: 500;">Deliver Address</td>
+    <td style="width: 40%;font-size: x-large;font-weight: 500;">Order Details</td>
+  </tr>
+  <tr>
+    <td style="font-size: large;">ziabags<br>ziabags944@gmail.com <br> Kozhikode, Kerala</td>
+    <td style="font-size: large;">dhdyth <br>dsghstbr <br>fvsv</td>
+    <td style="font-size: large;">order id : hfddhssgfds <br> date : jhffhgdhdf <br> payment mode : gfhgfhgf</td>
+  </tr>
+</table>
+<div style="font-size: x-large; font-weight: bold;">Order Details</div>
+  <table style="border: 1px solid gray;padding: 4px;font-size: larger;margin-bottom: 1rem;">
+    <tr style="background-color: lightgray;">
+      <th>Product</th>
+      <th>Count</th>
+     
+      <th>Amount</th>
+    </tr>
+
+    
+    {% for item in order.orderitem.all %}
+    <tr>
+      <td>{{item.product.title}}</td>
+      <td>{{item.quantity}}</td>
+      <td>{{item.product.price}}</td>
+  
+    </tr>
+    {% endfor %}
+  </table>
+  <table style="font-size: x-large;">
+    <tr>
+      <td></td>
+      <td></td>
+      <td>Total Amount</td>
+      <td>{{order.total_price}}</td>
+    </tr>
+      <tr>
+      <td></td>
+      <td></td>
+    
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td style="font-weight: 500;">Final Amount</td>
+      <td style="font-weight: 500;">{{order.total_price}}-</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

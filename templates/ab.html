@@ -1,0 +1,20 @@
+<div class="dropdown ml-auto">
+    {% load i18n %}
+    {% get_current_language as CURRENT_LANGUAGE %}
+    {% get_available_languages as AVAILABLE_LANGUAGES %}
+    {% get_language_info_list for AVAILABLE_LANGUAGES as languages %}
+
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Change Language
+    </button>
+
+    <ul class="dropdown-menu">
+        {% for language in languages %}
+            <li>
+                <a class="block px-4 py-2 text-gray-800 hover:bg-gray-200" href="{{ language.code }}">{{ language.name_local }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
