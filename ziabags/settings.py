@@ -32,7 +32,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 
-
+ALLOWED_HOSTS = [
+    os.environ.get("HOSTING_IP"),
+    "127.0.0.1",
+    "localhost",
+]
 
 
 
@@ -59,7 +63,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'product',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'rosetta',
     'parler',
     'ckeditor',# third party
@@ -131,6 +135,17 @@ DATABASES = {
         'PORT':'5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ziabags',
+#         'USER': 'myprojectuser',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
