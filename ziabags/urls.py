@@ -26,15 +26,15 @@ if settings.DEBUG:
     ]
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    urlpatterns += [
-        re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS}),
-    ]
+    # urlpatterns += [
+    #     re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATICFILES_DIRS}),
+    # ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-urlpatterns += [
-    re_path(r'^.*$', Custom404View.as_view(), name='custom_404'),
-]
+# urlpatterns += [
+#     re_path(r'^.*$', Custom404View.as_view(), name='custom_404'),
+# ]
 
