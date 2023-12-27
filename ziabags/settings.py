@@ -138,7 +138,7 @@ WSGI_APPLICATION = 'ziabags.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ziabags',
         'USER': 'postgres',
         'PASSWORD': 'password',
