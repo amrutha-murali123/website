@@ -138,9 +138,9 @@ WSGI_APPLICATION = 'ziabags.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg',
         'NAME': 'ziabags',
-        'USER': 'myprojectuser',
+        'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '5432',
@@ -200,21 +200,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+
  
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale/'),
 ]
 
-STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),)# i did
 
-
-AUTH_USER_MODEL="users.UserProfile"# i did
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),) # i did
+STATIC_ROOT=os.path.join(BASE_DIR,"assets","static") # i did
 
 MEDIA_URL="/media/"# i did
-MEDIA_ROOT=os.path.join(BASE_DIR,"media")# i did
+MEDIA_ROOT=os.path.join(BASE_DIR,"media",)# i did
+
+AUTH_USER_MODEL="users.UserProfile"# i did
 
 TAILWIND_APP_NAME='theme'# i did
 
