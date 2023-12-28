@@ -36,6 +36,7 @@ ALLOWED_HOSTS = [
     os.environ.get("HOSTING_IP"),
     "127.0.0.1",
     "localhost",
+    "www.ziabags.shop",
 ]
 
 
