@@ -210,10 +210,10 @@ LOCALE_PATHS = [
 
 STATIC_URL = '/assets/'
 STATICFILES_DIRS=(os.path.join(BASE_DIR,'static'),) # i did
-STATIC_ROOT=os.path.join(BASE_DIR,"assets",) # i did
+STATIC_ROOT=os.path.join(BASE_DIR,"assets") # i did tfytydr
 
 MEDIA_URL="/media/"# i did
-MEDIA_ROOT=os.path.join(BASE_DIR,"media",)# i did
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")# i did
 
 AUTH_USER_MODEL="users.UserProfile"# i did
 
