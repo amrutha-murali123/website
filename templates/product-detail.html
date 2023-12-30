@@ -81,7 +81,9 @@
                 <img class="object-contain w-full h-full" src="{{ product.imagesfour.url }}" alt="{{ first_image.product.title }}" onclick="showImage('{{ product.imagesfour.url }}')">
               </a>
             </div>
-            <div id="imageModal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+            {% comment %} <div id="imageModal" class="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-75 flex items-center justify-center hidden"> {% endcomment %}
+              <div id="imageModal" class="fixed top-0 left-0 w-full h-full flex items-center justify-center hidden">
+
               <div class="bg-white rounded-lg p-4">
                   <div class="flex justify-end">
                       <button onclick="closeModal()" class="text-3xl cursor-pointer">&times;</button>
@@ -188,7 +190,7 @@
                   <input type="hidden" name="product_id" value="{{product.id}}" >
                   <input class='border h-10 mt-8 ml-4' 
   type="number"
-  class="w-full h-full px-4 text-sm font-bold appearance-none outline-none"
+  class="w-full h-full px-4 text-sm font-bold"
   name="quantity"
   id="quantity" 
   placeholder='quantity'
@@ -382,21 +384,7 @@ Submit Review
                      <div class="flex flex-col md:flex-row justify-between w-full">
                          <div class="flex flex-row justify-between items-start">
                          <div id="rating-stars"></div>
-<script>
-                         function showImage(src, event) {
-                          const modal = document.getElementById('imageModal');
-                          const modalImage = document.getElementById('modalImage');
-                          modalImage.src = src;
-                          modal.classList.remove('hidden');
-                          event.stopPropagation(); // Stop event propagation
-                      }
-                      
-                      function closeModal() {
-                          const modal = document.getElementById('imageModal');
-                          modal.classList.add('hidden');
-                      }
-           
-                    </script>
+
 <script>
 // Function to display star rating based on the given rating (1-5)
 function displayRating(rating) {
