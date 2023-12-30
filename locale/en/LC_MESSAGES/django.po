@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-13 14:51+0530\n"
-"PO-Revision-Date: 2023-12-13 09:06+0000\n"
+"PO-Revision-Date: 2023-12-28 09:58+0000\n"
 "Last-Translator: Anonymous User <ziabags944@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -145,7 +145,7 @@ msgstr "ziabags UI. All Rights Reserved."
 
 #: templates/home.html:274 templates/home.html:308
 msgid "Add to wishlist"
-msgstr "Add to Cart"
+msgstr "Add to Wishlist"
 
 #: templates/login.html:17
 msgid "Account Login"
@@ -203,8 +203,8 @@ msgstr "Forgot your password?"
 
 #: templates/password_forgot_form.html:21
 msgid ""
-" Enter your email address below and we will email instructions for setting a "
-"new one."
+" Enter your email address below and we will email instructions for setting a"
+" new one."
 msgstr ""
 "Enter your email address below and we will email instructions for setting a "
 "new one."

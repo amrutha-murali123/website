@@ -383,6 +383,21 @@ Submit Review
                          <div class="flex flex-row justify-between items-start">
                          <div id="rating-stars"></div>
 <script>
+                         function showImage(src, event) {
+                          const modal = document.getElementById('imageModal');
+                          const modalImage = document.getElementById('modalImage');
+                          modalImage.src = src;
+                          modal.classList.remove('hidden');
+                          event.stopPropagation(); // Stop event propagation
+                      }
+                      
+                      function closeModal() {
+                          const modal = document.getElementById('imageModal');
+                          modal.classList.add('hidden');
+                      }
+           
+                    </script>
+<script>
 // Function to display star rating based on the given rating (1-5)
 function displayRating(rating) {
   const ratingStars = document.getElementById('rating-stars');

@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% load i18n %}{% block content%}{% load static%}
 <div class="flex">
     <div class="w-2/12"> 
-        <div class="ps-3 ms-1 pt-2">{% trans "PRICE" %}</div>
+        {% comment %} <div class="ps-3 ms-1 pt-2">{% trans "PRICE" %}</div> {% endcomment %}
         <div class="accordion-body p-0 pb-2">
           <div class="my-js-slider"></div>
         </div>
@@ -25,10 +25,41 @@
                         <h3 class="text-xl font-semibold">{{product.title}}</h3>
                         <p class="text-gray-600">{{product.category.title}}</p>
                         <div class="mt-4">
-                            <span class="text-xl font-bold">{{product.price}}</span>
+                            <span class="text-xl font-bold">Rs.{{product.price}}</span>
                             {% comment %} <button
                                 class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right">{% trans "Add to Cart" %}
                                 </button> {% endcomment %}
+                              {% comment %} <div display-flex>
+                                <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                  {% csrf_token %}
+                                  <button class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right mt-4 mr-28">
+                                      {% trans "add to Cart" %}
+                                  </button>
+
+                                <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                  {% csrf_token %}
+                                  <button class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right mr-20">
+                                      {% trans "whishlist" %}
+                                  </button>
+                              </form>
+                            </div> {% endcomment %}
+
+                            <div class="mt-8 flex gap-2 center ">
+                              {% comment %} <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                  {% csrf_token %}
+                                  <button class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right">
+                                      {% trans "cart" %}
+                                  </button>
+                              </form> {% endcomment %}
+      
+                              <form method="post" action="{% url 'add_to_wishlist' product.id %}">
+                                  {% csrf_token %}
+                                  <button class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-full text-sm font-semibold transition duration-300 ease-in-out transform hover:scale-105 float-right">
+                                      {% trans "Whishlist" %}
+                                  </button>
+                              </form>
+                              
+                          </div>
                         </div>
                     </div>
                     {% endfor %}

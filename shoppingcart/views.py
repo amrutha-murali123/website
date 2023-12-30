@@ -35,6 +35,7 @@ def update_cart_item_quantity(request, item_id):
     cart_item.save()
     return redirect('view_cart')
 
+# @login_required
 def cart_view(request):
 
 

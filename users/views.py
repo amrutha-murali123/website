@@ -568,7 +568,7 @@ class Custom404View(View):
             # Handle the Http404 exception
             return render(request, '404.html', status=404)
         
-
+# @login_required
 class AddToWishlistView(View):
     """
     Integrate this view into your Django project's urls.py file to handle adding
@@ -598,7 +598,7 @@ class AddToWishlistView(View):
             return redirect('login')
 
 
-
+# @login_required
 
 class WishlistView(LoginRequiredMixin, View):
 

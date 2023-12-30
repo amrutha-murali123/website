@@ -32,7 +32,7 @@
                                 <span class="text-gray-500">#{{ order.id }}</span>
                                 <span class="text-sm text-gray-400"> - {{ order.created_at }}</span>
                             </div>
-                            <div class="text-lg font-bold">${{ order.total_price }}</div>
+                            <div class="text-lg font-bold">Rs.{{ order.total_price }}</div>
                         </div>
 
 
@@ -50,7 +50,7 @@
                                 <!-- Display Order Details -->
                                 <div>
                                     <p><span class="font-bold">Date:</span> {{ order.created_at }}</p>
-                                    <p><span class="font-bold">Total Price:</span> ${{ order.total_price }}</p>
+                                    <p><span class="font-bold">Total Price:</span> Rs.{{ order.total_price }}</p>
                                     <div class="image-container" style="display: flex; gap: 10px;">
                                     {% for item in order.orderitem.all%}
                                     <img src="{{ item.product.cover_image.url }}" alt="image"
