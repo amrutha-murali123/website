@@ -293,3 +293,4 @@ RAZORPAY_API_SECRET = 'l006wj979Vdni9onzTQ4MKQj'
 # CELERY_TIMEZONE = 'Europe/Paris'
 # CELERY_RESULT_BACKEND = 'django-db'
 
+LOGIN_URL="login"
