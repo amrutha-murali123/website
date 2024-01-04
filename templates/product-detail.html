@@ -88,15 +88,15 @@
                   <div class="flex justify-end">
                       <button onclick="closeModal()" class="text-3xl cursor-pointer">&times;</button>
                   </div>
-                  <img id="modalImage" class="object-contain w-full h-full max-h-96" alt="Enlarged Image">
+                  <img id="modalImage" class="object-contain w-full h-full max-h-96" src="https://picsum.photos/400" alt="Enlarged Image">
               </div>
           </div>
           
           <script>
               function showImage(src) {
                   const modal = document.getElementById('imageModal');
-                  const modalImage = document.getElementById('modalImage');
-                  modalImage.src = src;
+                 // const modalImage = document.getElementById('modalImage');
+                 // modalImage.src = src;
                   modal.classList.remove('hidden');
               }
           
@@ -177,7 +177,7 @@
           </div>
          
           <div class="mb-6"></div>
-          <div class="flex flex-wrap items-center mb-6">
+          <div class="flex  items-center mb-6">
             <div class="mb-4 mr-4 lg:mb-0">
               <div class="w-28">
                 <div
@@ -188,14 +188,7 @@
 
                     {% csrf_token %}
                   <input type="hidden" name="product_id" value="{{product.id}}" >
-                  <input class='border h-10 mt-8 ml-4' 
-  type="number"
-  class="w-full h-full px-4 text-sm font-bold"
-  name="quantity"
-  id="quantity" 
-  placeholder='quantity'
-  min="1"
-/>
+                  <input class='border h-10 mt-8 ml-4 w-full h-full px-4 text-sm font-bold' type="number" name="quantity" id="quantity" placeholder='quantity' min="1"/>
 
                 </div>
               </div>
@@ -205,9 +198,11 @@
             </div>
             
             <a id="add-to-cart-button" class="group relative inline-block h-12 w-full -mb-2 bg-blueGray-900 rounded-md add-to-cart-link mt-10" href="#">
-              <div class="absolute top-0 left-0 transform -translate-y-1 -translate-x-1 w-full h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
+              <div class="absolute ml-4 mt-2 transform -translate-y-1 -translate-x-1 w-40 h-full group-hover:translate-y-0 group-hover:translate-x-0 transition duration-300">
                   <div class="flex h-full w-full items-center justify-center bg-green-600 border-2 border-black rounded-md">
-                      <span class="text-base font-black text-black"><button type="submit" >Add to Cart</button></span>
+                      <span class="text-base font-black text-black">
+                        <button type="submit" >Add to Cart</button>
+                      </span>
                       
                   </div>
               </div>
@@ -294,7 +289,15 @@
 
   </div>
 </div>
-
+<script>
+  document.querySelector('form').addEventListener('submit', function (event) {
+    var quantity = document.getElementById('quantity').value;
+    if (!quantity || quantity === "") {
+        alert('Please select a quantity before adding to cart.');
+        event.preventDefault(); // Prevent form submission
+    }
+});
+</script>
 
 </div>
 </div>

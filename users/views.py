@@ -1,12 +1,6 @@
-
-import gettext
-import hashlib
-import json
-from pdb import post_mortem
 from django.http import Http404, HttpResponseBadRequest
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse
-from requests import post
 
 from .models import UserProfile
 from django.contrib import messages
@@ -22,8 +16,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.utils.translation import gettext as _
-from parler.models import TranslatableModel
-from django.db.models import Prefetch
+
 
 from django.views import View
 from django.shortcuts import get_object_or_404
@@ -32,7 +25,6 @@ from product.models import Wishlist, WishlistItem
 from product.models import *
 from django.shortcuts import render, redirect
 from product.models import Product
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from shoppingcart.models import *
 from xhtml2pdf import pisa
@@ -215,19 +207,25 @@ class SignupView(View):
 
         otp = str(random.randint(100000, 999999))
         send_otp_email(email, name, otp)
-        key = hashlib.sha256(email.encode()).hexdigest()
-        cache.set(key, {'email': email, 'name': name,
-                        'password': pass1, 'otp': otp}, timeout=600)
-        return redirect("otp", key=key)
+        # key = hashlib.sha256(email.encode()).hexdigest()
+        # cache.set(key, {'email': email, 'name': name,
+        #                 'password': pass1, 'otp': otp}, timeout=600)
+        
+        request.session['signup_data'] = {'email': email, 'name': name,'password': pass1, 'otp': otp}
+
+        return redirect("otp")
 
 
 
 class VerifyOtpView(View):
-    def get(self, request, key):
+    def get(self, request):
         # Render the OTP verification form
-        return render(request, "otp.html", {'key': key})
+        signup_data =  request.session.get('signup_data',{})
+        print(signup_data,"verify get")
 
-    def post(self, request, key):
+        return render(request, "otp.html")
+
+    def post(self, request):
 
 
         """
@@ -239,26 +237,26 @@ class VerifyOtpView(View):
         """
 
         receivedotp = request.POST.get("otp")
-
-        signup_data = cache.get(key)
-        print(signup_data)
+        # signup_data = cache.get(key)
+        signup_data =  request.session.get('signup_data',{})
+        print(signup_data,"verify")
         if not signup_data:
             messages.warning(request, 'OTP expired or invalid')
-            return redirect('otp', key=key)
+            return redirect('otp')
         otp = signup_data.get('otp')
         name = signup_data.get('name')
         email = signup_data.get('email')
         password = signup_data.get('password')
-        print(receivedotp, otp)
         if receivedotp != otp:
             messages.warning(request, "OTP mismatch")
-            return redirect("otp", key=key)
+            return redirect("otp")
 
         user = UserProfile.objects.create_user(
             username=name, email=email, password=password
         )
         user.save()
-        cache.delete(key)
+        # cache.delete(key)
+        del request.session['signup_data']
         return redirect("login")    # locking mechanism refer
 
 class ResendOTP(View):
@@ -270,24 +268,50 @@ class ResendOTP(View):
     If there are no registration details in the cache, it redirects to the signup page.
 
   """
-  def get(self, request, key):
-    """
-    Handle GET requests for resending OTP.
+#   def get(self, request, key):
+#     """
+#     Handle GET requests for resending OTP.
 
-    """
+#     """
 
-    signup_data = cache.get(key)
+#     signup_data = cache.get(key)
+#     if signup_data:
+#       email = signup_data.get('email')
+#       name = signup_data.get('name')
+#       otp = str(random.randint(100000, 999999))
+#       print(otp)
+#       send_otp_email(email, name, otp)
+#       signup_data['otp'] = otp
+#       existing_timeout = signup_data.get('timeout', None)
+#       cache.set(key, signup_data, timeout=existing_timeout)
+#       return redirect('otp', key=key)
+#     return redirect('signup')
+    
+  # def get(self, request, key):
+
+
+  def get(self, request):
+    print("resend")
+    # signup_data = cache.get(key)
+    signup_data = request.session.get('signup_data',{})
+
     if signup_data:
-      email = signup_data.get('email')
-      name = signup_data.get('name')
-      otp = str(random.randint(100000, 999999))
-      print(otp)
-      send_otp_email(email, name, otp)
-      signup_data['otp'] = otp
-      existing_timeout = signup_data.get('timeout', None)
-      cache.set(key, signup_data, timeout=existing_timeout)
-      return redirect('otp', key=key)
-    return redirect('signup')
+        email = signup_data.get('email')
+        name = signup_data.get('name')
+        otp = str(random.randint(100000, 999999))
+        account_verification_email(email, name, otp)
+        signup_data['otp'] = otp
+        print(signup_data,"resendotp")
+      # existing_timeout = signup_data.get('timeout', None)
+      # cache.set(key, signup_data, timeout=existing_timeout)
+      # return redirect('user_verify_otp', key=key)            
+        request.session['signup_data'] = signup_data
+
+    
+    return redirect("otp")
+    # return redirect('register')
+  
+
 
 class ForgotPassword(View):
   
@@ -413,6 +437,7 @@ class LoginView(View):
         """ 
 
         return render(request, "login.html")
+  
 
 
 
@@ -597,8 +622,6 @@ class AddToWishlistView(View):
         else:
             return redirect('login')
 
-
-# @login_required
 
 class WishlistView(LoginRequiredMixin, View):
 

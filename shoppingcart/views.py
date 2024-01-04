@@ -13,6 +13,8 @@ from decimal import Decimal
 from .tasks import send_order_confirmation_email
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.http import HttpResponseForbidden
+
 
 from shoppingcart import models
 
@@ -35,7 +37,7 @@ def update_cart_item_quantity(request, item_id):
     cart_item.save()
     return redirect('view_cart')
 
-# @login_required
+@login_required
 def cart_view(request):
 
 
@@ -61,13 +63,37 @@ def cart_view(request):
         messages.success(request, 'Cart updated successfully')
         return redirect('shoppingcart:cart')
 
-    
-    user_cart = Cart.objects.filter(user=request.user).first()
+    # try:
+    #      user_cart = Cart.objects.filter(user=request.user).first()
    
-    cart_items = CartItem.objects.filter(cart=user_cart)
+    #      cart_items = CartItem.objects.filter(cart=user_cart)
     
-    return render(request, 'cart.html', {'cartitem': cart_items,'cart':user_cart})
-
+    #      return render(request, 'cart.html', {'cartitem': cart_items,'cart':user_cart})
+    # except Cart.DoesNotExist:   
+    #     # Handle the case when the user does not have a cart
+    #     messages.warning(request, 'You do not have a cart yet. Add items to your cart to continue.')
+    #     return redirect('home')  # Adjust the redirect URL as needed
+    # except Exception as e:
+    #     # Handle other exceptions, log them, and possibly show an error message
+    #     messages.error(request, f'Error: {str(e)}')
+    #     return redirect('home')  # Adjust the redirect URL as needed
+    try:
+        if request.user.is_authenticated:
+            user_cart = Cart.objects.get(user=request.user)
+            cart_items = CartItem.objects.filter(cart=user_cart)
+            return render(request, 'cart.html', {'cartitem': cart_items, 'cart': user_cart})
+        else:
+            # Handle the case when the user is not authenticated
+            messages.warning(request, 'You must be logged in to view your cart.')
+            return redirect('login')  # Redirect to the login page or adjust as needed
+    except Cart.DoesNotExist:
+        # Handle the case when the user does not have a cart
+        messages.warning(request, 'You do not have a cart yet. Add items to your cart to continue.')
+        return redirect('home')  # Adjust the redirect URL as needed
+    except Exception as e:
+        # Handle other exceptions, log them, and possibly show an error message
+        messages.error(request, f'Error: {str(e)}')
+        return redirect('home')  # Adjust the redirect URL as needed
 
 
 
