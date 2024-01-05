@@ -88,15 +88,15 @@
                   <div class="flex justify-end">
                       <button onclick="closeModal()" class="text-3xl cursor-pointer">&times;</button>
                   </div>
-                  <img id="modalImage" class="object-contain w-full h-full max-h-96" src="https://picsum.photos/400" alt="Enlarged Image">
+                  <img id="modalImage" class="object-contain w-full h-full max-h-96" src="" alt="Enlarged Image">
               </div>
           </div>
           
           <script>
               function showImage(src) {
                   const modal = document.getElementById('imageModal');
-                 // const modalImage = document.getElementById('modalImage');
-                 // modalImage.src = src;
+                  const modalImage = document.getElementById('modalImage');
+                  modalImage.src = src;
                   modal.classList.remove('hidden');
               }
           
