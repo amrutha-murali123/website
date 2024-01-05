@@ -9,17 +9,11 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.conf import settings
 import razorpay
-from decimal import Decimal
+
 from .tasks import send_order_confirmation_email
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.http import HttpResponseForbidden
 
-
-from shoppingcart import models
-
-
-
+from django.core.exceptions import ImproperlyConfigured
 
 
 
@@ -63,20 +57,7 @@ def cart_view(request):
         messages.success(request, 'Cart updated successfully')
         return redirect('shoppingcart:cart')
 
-    # try:
-    #      user_cart = Cart.objects.filter(user=request.user).first()
-   
-    #      cart_items = CartItem.objects.filter(cart=user_cart)
-    
-    #      return render(request, 'cart.html', {'cartitem': cart_items,'cart':user_cart})
-    # except Cart.DoesNotExist:   
-    #     # Handle the case when the user does not have a cart
-    #     messages.warning(request, 'You do not have a cart yet. Add items to your cart to continue.')
-    #     return redirect('home')  # Adjust the redirect URL as needed
-    # except Exception as e:
-    #     # Handle other exceptions, log them, and possibly show an error message
-    #     messages.error(request, f'Error: {str(e)}')
-    #     return redirect('home')  # Adjust the redirect URL as needed
+
     try:
         if request.user.is_authenticated:
             user_cart = Cart.objects.get(user=request.user)
@@ -239,35 +220,31 @@ class CheckoutView(View):
             
         
 
+
+
 class AddAddressView(FormView):
-    
-    """
-        View for adding a new address during the checkout process.
-
-    This class-based view extends the FormView class to handle the rendering
-    of the 'add_address.html' template and the form submission for adding a new address.
-    
-    """
-
     template_name = 'add_address.html'
-    form_class = AddressForm  
-    success_url = reverse_lazy('shoppingcart:checkout')
+    form_class = AddressForm
 
     def form_valid(self, form):
-        
-        """
-         Process the form submission when the form is valid.
-
-         Associate the address with the authenticated user and save the address to the database.
-        
-        """
-        
         user = self.request.user
         address = form.save(commit=False)
         address.user = user
         address.save()
+
+        # Set success_url dynamically based on the referrer
+        success_url = self.request.META.get('HTTP_REFERER', None)
+        if success_url is None:
+            raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+
         return super().form_valid(form)
 
+    def get_success_url(self):
+        success_url = self.request.META.get('HTTP_REFERER', None)
+        if success_url is None:
+            raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+        return success_url
+    
 @login_required
 def order_history(request):
     

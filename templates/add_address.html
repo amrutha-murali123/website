@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="bg-white rounded-lg shadow-lg p-6 ">
+    <div>
     <h1 class="text-2xl font-semibold mb-4">Add New Address</h1>
     <form method="post">
         {% csrf_token %}
@@ -44,5 +45,69 @@
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue active:bg-blue-700">Add Address</button>
         </div>
     </form>
+    </div>
+    {% comment %}
+class AddAddressView(FormView):
+    template_name = 'add_address.html'
+    form_class = AddressForm
+
+    def form_valid(self, form):
+        user = self.request.user
+        address = form.save(commit=False)
+        address.user = user
+        address.save()
+
+        # Set success_url dynamically based on the referrer
+        success_url = self.request.META.get('HTTP_REFERER', None)
+        if success_url is None:
+            raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        success_url = self.request.META.get('HTTP_REFERER', None)
+        if success_url is None:
+            raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+        return success_url
+    {% endcomment %}
+    {% comment %} <div>
+        <div  class="bg-white max-w-screen w-full rounded-md"> <!--Modal Content -->
+            <div class="p-3 flex items-center justify-between border-b border-b-gray-300"> <!--Modal Header -->
+               <h3 class="font-semibold text-xl">Addresses</h3>
+               
+           </div>
+           <div class="p-3 border-b border-b-gray-300"> <!--Modal Body -->
+                       {% for address in addresses %}
+
+                           <div class=" items-start justify-between bg-gray-100">
+                               <input type="radio" name="selectedAddress" value="{{address.id}}" class="mr-2" {% if forloop.first %}checked{% endif %}>
+                               <label class="items-center">
+                                   
+                               <strong>{{ address.name}} {{address.phone_number}}</strong>
+                               </label>
+                               <p> {{ address.street_address }},{{address.city }}, {{ address.postal_code }},{{ address.state }},{{ address.country }}
+                               </p>
+
+                           </div>
+                          
+                       {% endfor %}
+           </div>
+           <div class="mt-4 mx-2">
+                               <p>
+                               <a href="{% url 'shoppingcart:add_address' %}" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 border border-gray-700 rounded">
+                                   Add
+                               </a></p>
+                              </div>
+
+           <div class="p-3 flex items-center justify-start"> <!--Modal Footer -->
+               
+
+           </div>
+       </div> {% endcomment %}
+
+
+
+    </div> 
 </div>
+
 {% endblock %}

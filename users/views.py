@@ -670,7 +670,7 @@ class RemoveFromWishlistView(View):
         """
         if request.user.is_authenticated:
             product = get_object_or_404(Product.objects.select_related('category'), pk=product_id)# i did pre
-            wishlistitem = WishlistItem.objects.select_related('product__category').get(product=product)# i did pre
+            wishlistitem = WishlistItem.objects.select_related('product__category').get(product=product,wished_item__user=request.user)# i did pre
 
             wishlistitem.delete()
             messages.success(request, "Item removed")
